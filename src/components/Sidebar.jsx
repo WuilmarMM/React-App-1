@@ -4,10 +4,10 @@ import { useState, useCallback } from "react"
  * unordered list.
  * @returns Component
  */
-export default function Sidebar() {
-  let [newMenuItem, setNewMenuItem] = useState("")
+export default function Sidebar({initialMenuItems}) {
+  let [newMenuItem, setNewMenuItem] = useState("");
   // TODO: 2 Using a state hook, maintain the current menu items as an array state.
-  // let [menuItems, setMenuItems] = useState(initialMenuItems)
+  let [menuItems, setMenuItems] = useState(initialMenuItems);
   let [filter, setFilter] = useState("")
   // Adds a single string passed in as parameter to the state element
   // "menuItems" that holds the set of current menu items.
@@ -25,6 +25,13 @@ export default function Sidebar() {
   // its own item.
   return (
     <div>
+      <ul>
+        {initialMenuItems.map((item, index) => (
+        <li>
+          {item}
+          </li>
+        ))}
+      </ul>
       <input
         type="text"
         id="newMenuItemValue"
